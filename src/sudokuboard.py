@@ -79,10 +79,12 @@ def main():
         events = pygame.event.get()
         for event in events:
             if event.type == pygame.KEYDOWN and not init:
-                if event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE and solvable:
                     init = True
                     # Find the constraint of the current board after altering
                     constraint = algorithms.find_max()
+                    pos = constraint[0]
+                    # print(constraint)
                 elif event.key == pygame.K_r:
                     algorithms.board_reset()
                     run = True
@@ -108,10 +110,10 @@ def main():
                 pos = algorithms.find_next(pos)
             elif tmp == 0:
                 # Board not solvable!
-                if algorithms.find_prev(pos) == (0, 0) and board[constraint[0][0]][constraint[0][1]] == constraint[1]:
+                if algorithms.find_prev(pos, constraint) == constraint[0] and board[constraint[0][0]][constraint[0][1]] == constraint[1]:
                     init = False
                     solvable = False
-                pos = algorithms.find_prev(pos)
+                pos = algorithms.find_prev(pos, constraint)
 
         # Draw the board
         for i in range(1, 10):
@@ -136,7 +138,7 @@ def main():
             rect.fill(c.color['rgba_red'])
             screen.blit(rect, (selected[1] * c.cell_side, selected[0] * c.cell_side))
         else:
-            if not init and not solved:
+            if not init and not solved and solvable:
                 screen.blit(font1.render("Press space to solve", 1, c.color['black']), (40, 200))
                 screen.blit(font1.render("or click any square", 1, c.color['black']), (40, 270))
                 screen.blit(font1.render("to manually change", 1, c.color['black']), (40, 340))

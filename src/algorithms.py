@@ -108,7 +108,7 @@ def cell_assign(pos):
 
 
 # Backtrack to the last elem
-def find_prev(pos):
+def find_prev(pos, constraint):
     row = pos[0]
     col = pos[1]
     if backtrack[(row, col)][1] == 1:
@@ -117,13 +117,16 @@ def find_prev(pos):
         col -= 1
     else:
         # Constraint for maximum return
-        if row == 0 and col == 0:
-            return 0, 0
+        # if row == 0 and col == 0:
+        #     return 0, 0
+        if row == constraint[0][0] and col == constraint[0][1]:
+            print(constraint[0])
+            return constraint[0]
         # In case of (x, 0)
         row -= 1
         col = 8
     if backtrack[(row, col)][1] == -1:
-        return find_prev((row, col))
+        return find_prev((row, col), constraint)
     return row, col
 
 
