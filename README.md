@@ -1,5 +1,5 @@
-# SudokuSolver
-Just a simple implementation of backtracking algo visualized with PyGame
+# SudokuSolver 
+Just a simple implementation of backtracking algo written in Python and visualized with PyGame
 
 Independent exe file for window:
 executable -> dist ->sudokuboard.exe
