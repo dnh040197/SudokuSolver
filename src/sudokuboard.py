@@ -19,7 +19,7 @@ def update_num(pos, font, init):
     return num_text
 
 
-# Kinda hardcoded input handling but
+# hardcoded input handling but
 # I have no idea how to do it otherwise
 def input_handle(event, pos):
     if pos != (-1, -1):
@@ -96,6 +96,8 @@ def main():
             elif event.type == pygame.QUIT:
                 run = False
                 pygame.quit()
+
+        # Track the position of the mouse
         if pygame.mouse.get_pressed()[0] and not init and not solved:
             selected = mouse_pos_to_cell(pygame.mouse.get_pos())
 
