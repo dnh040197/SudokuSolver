@@ -1,5 +1,5 @@
 # SudokuSolver 
-Hello, this is my implementation of backtracking algorithm written in Python and visualized with PyGame
+Hello, this is my implementation of the backtracking algorithm written in Python and visualized with PyGame
 
 The of backtracking algorithm finds every possible solution to a computational problem, in this case - a Sudoku board by trying out every valid number in each cell and then process onto the next(Which is done in exponential time hence extremely time-consuming)
 
